@@ -1,3 +1,35 @@
-<header>
-    
-</header>
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top" style="background-color: var(--olx-brand); padding: 12px 0;">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-2 p-0" href="{% url 'index' %}" style="color: var(--olx-mint); font-family: Arial, sans-serif; letter-spacing: -1px;">olx</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#olxNavbar" aria-controls="olxNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="olxNavbar">
+            <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold small" href="#"><i class="bi bi-chat-left-text me-1"></i> Повідомлення</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold small" href="#"><i class="bi bi-person me-1"></i> {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold small" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Вихід</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold small" href="{% url 'login' %}">Вхід</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold small" href="{% url 'register' %}">Реєстрація</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="btn btn-light fw-bold px-4 py-2 small" href="{% url 'create_listing' %}" style="color: var(--olx-brand); font-size: 14px;">Додати оголошення</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

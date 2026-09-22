@@ -1,9 +1,9 @@
 """
-URL configuration for businka_handmade project.
+URL configuration for olx project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
-businka_handmades:
+olxs:
 Function views
     1. Add an import:  from my_app import views
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
@@ -16,12 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static
-
-from . import settings
+from django.conf.urls.static import static, settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-    path('', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
